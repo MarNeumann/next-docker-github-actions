@@ -30,7 +30,7 @@ jobs:
           NEXT_PUBLIC_BACKEND_URL: ${{ secrets.APP_NEXT_PUBLIC_BACKEND_URL }}
           NEXT_PUBLIC_META_API_KEY: ${{ secrets.APP_NEXT_PUBLIC_META_API_KEY }}
         with:
-          name: c-ehrlich/next-docker-github-actions/next_test_image
+          name: marneumann/next-docker-github-actions/next_test_image
           registry: ghcr.io
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.GH_TOKEN }}
@@ -52,7 +52,7 @@ jobs:
           # TODO update APT and install Docker from the script so we don't need to do it manually on the server
           script: |
             docker login ghcr.io -u $GITHUB_USERNAME -p $GITHUB_TOKEN
-            docker pull ghcr.io/c-ehrlich/next-docker-github-actions/next_test_image:latest
+            docker pull ghcr.io/marneumann/next-docker-github-actions/next_test_image:latest
             docker stop next-test-app
             docker system prune -f
-            docker run --name next-test-app -dit -p 12345:3000 ghcr.io/c-ehrlich/next-docker-github-actions/next_test_image:latest
+            docker run --name next-test-app -dit -p 12345:3000 ghcr.io/marneumann/next-docker-github-actions/next_test_image:latest
